@@ -2,15 +2,16 @@ const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const clouds = document.querySelector('.clouds')
 
-const jump = () => {
-    mario.classList.add('jump');
-    setTimeout(() => {
-        mario.classList.remove('jump');
-
-    }, 900)
+const jump = (event) => {
+    //if (event.key === 'Enter') {
+        mario.classList.add('jump');
+        setTimeout(() => {
+            mario.classList.remove('jump');
+        } 
+    , 500)//}
 } 
 
-const loop = setInterval(() => {
+const loop = setInterval(() => { //loop do jogo que vai verificando se perdeu ou não
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
     const cloudsPosition = clouds.offsetLeft;
@@ -36,3 +37,4 @@ const loop = setInterval(() => {
 }, 10);
 
 document.addEventListener('keydown', jump); 
+document.addEventListener('touchstart', jump);
